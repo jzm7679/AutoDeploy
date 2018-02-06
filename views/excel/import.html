@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>医可视（VMP）- 上传Excel文件，然后解析</title>
+
+    <link rel="stylesheet" href="/plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/common.css">
+    <link rel="stylesheet" href="/plugins/jquery-confirm/css/jquery-confirm.min.css">
+
+
+    <style type="text/css">
+        .head{background-color: #3c3c3c;}
+        h3{color: white; margin: 0 auto; height: 50px; line-height: 50px;}
+        h3>small{color: white;}
+        .bor{text-align: center;}
+        .tarea{width: 100%; height: 398px; border: 1px dashed #ddd; resize: none;}
+        .dept{overflow-y: scroll; height: 580px; display: block; width: 32%;}
+
+    </style>
+
+
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row head">
+            <div class="col-md-12">
+                <h3>医可视（VMP）<small>上传Excel文件，然后解析</small></h3>
+            </div>
+        </div>
+
+        <div class="row" style="padding-top: 30px;">
+            <div class="col-md-offset-2 col-md-8">
+                <form>
+                    <div class="form-group">
+                        <label for="excel">请依次选择Excel文件</label>
+                        <select class="form-control" id="excel">
+                            <option value="0"></option>
+                            <option value="1">科室2018-02-05.xlsx</option>
+                            <option value="1">医务人员2018-02-05.xlsx</option>
+                            <option value="1">疾病2018-02-05.xlsx</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="log">解析日志</label>
+                        <textarea class="form-control" style="height: 500px;" id="log"></textarea>
+                    </div>
+                    <button type="button" class="btn btn-danger" onclick="isToBegin(this);">
+                        <span class="glyphicon glyphicon-send"></span> 执行
+                    </button>
+                </form>
+            </div>
+        </div>
+        <footer class="footer navbar-fixed-bottom pulllog-box">
+            <div class="container">
+                <a href="/excel/db" class="btn btn-info" title="上一步">上一步</a>
+                &nbsp;
+                <a href="/excel/basedb" class="btn btn-info" title="下一步">下一步</a>
+            </div>
+        </footer>
+    </div>
+
+
+    <script src="/plugins/jquery/jquery.min.js"></script>
+    <script src="/plugins/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="/plugins/jquery-confirm/js/jquery-confirm.min.js"></script>
+    <script type="text/javascript">
+
+        function isToBegin(obj) {
+            var t = $('#excel').val();
+            if(t == 0){
+                $.alert({
+                    title: '提示',
+                    content: '请选择解析的模板！',
+                    animation: 'Rotate',
+                    closeAnimation: 'rotate',
+                    animationBounce: 1
+                });
+            }else{
+                var name = $.trim($('#excel').find('option:selected').html());
+                $.confirm({
+                    title: '提示',
+                    content: '确认操作 <span style="color: red;">' + name + '</span> 文件吗？',
+                    animation: 'Rotate',
+                    closeAnimation: 'rotate',
+                    animationBounce: 1,
+                    buttons: {
+                        confirm: function () {
+                            $(obj).attr('disabled', true);
+                            $('#log').val('开始解析...');
+                        },
+                        cancel: function () {
+
+                        }
+                    }
+                });
+            }
+        }
+
+    </script>
+</body>
+</html>

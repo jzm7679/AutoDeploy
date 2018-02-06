@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <title>用户列表</title>
+
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+<div class="container" style="padding-top: 150px;">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div clas="col-md-12">
+                    <table class="table table-hover table-condensed">
+                        <thead>
+                            <th>#</th>
+                            <th>工号</th>
+                            <th>性别</th>
+                            <th>手机号</th>
+                            <th>状态</th>
+                            <th>角色</th>
+                            <th>入职时间</th>
+                            <th>操作</th>
+                        </thead>
+                        <tbody>
+                            <% if(datas.length){ %>
+                            <% datas.forEach(function(user, item){ %>
+                            <tr>
+                                <td><%= item + 1 %></td>
+                                <td><%= user.number %></td>
+                                <td>
+                                    <%= (user.sex == 0 ? '男' : '女')  %>
+                                </td>
+                                <td><%= user.iphone %></td>
+                                <td>
+                                    <%= user.state  == 0 ? '正常' : '冻结' %>
+                                </td>
+                                <td><%= user.role_name %></td>
+                                <td><%= user.entry_time %></td>
+                                <td>
+                                    <button type="button" class="btn btn-xs btn-info">查看</button>
+                                    <button type="button" class="btn btn-xs btn-success">修改</button>
+                                    <button type="button" class="btn btn-xs btn-danger">删除</button>
+                                </td>
+                            </tr>
+                            <% }) %>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

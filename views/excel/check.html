@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>医可视（VMP）- 校验</title>
+
+    <link rel="stylesheet" href="/plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/common.css">
+
+    <style type="text/css">
+        .head{background-color: #3c3c3c;}
+        h3{color: white; margin: 0 auto; height: 50px; line-height: 50px;}
+        h3>small{color: white;}
+        .bor{text-align: center;}
+        .tarea{width: 100%; height: 398px; border: 1px dashed #ddd; resize: none;}
+        .dept{overflow-y: scroll; height: 580px; display: block; width: 32%;}
+    </style>
+
+
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row head">
+            <div class="col-md-12">
+                <h3>医可视（VMP）<small>校验</small></h3>
+            </div>
+        </div>
+
+        <div class="row" style="padding-top: 30px;">
+            <div class="col-md-offset-2 col-md-8">
+                <ul class="nav nav-tabs nav-pills nav-justified" id="nav">
+                    <li role="presentation" class="active"><a href="#dept">科室</a></li>
+                    <li role="presentation" ><a href="#user">用户</a></li>
+                    <li role="presentation"><a href="#disease">疾病</a></li>
+                </ul>
+                <div class="tab-content" id="nav-content" style="height: 600px; border: 1px solid #337ab7;">
+                    <div role="tabpanel" class="tab-pane active" id="dept">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <form>
+                                            <div class="form-group">
+                                                <label>请上传 <span style="color: red">科室.xlsx</span> 文件</label>
+                                                <input type="file">
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="panel panel-default">
+                                                    <div class="panel-body">
+                                                        <textarea id="content1" class="tarea"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <button type="button" onclick="checkExl(1);" class="btn btn-danger">
+                                                    <span class="glyphicon glyphicon-search"></span> 校验</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 dept">
+                                <table class="table table-hover table-condensed">
+                                    <thead>
+                                        <th>#</th>
+                                        <th>科室</th>
+                                        <th>启用</th>
+                                    </thead>
+                                    <tbody style="height: 300px;">
+                                        <% if(datas.length) { %>
+                                        <% datas.forEach(function(dept, item){ %>
+                                        <tr>
+                                            <td><%= item + 1%></td>
+                                            <td><%= dept.dept_name%></td>
+                                            <td>
+                                                <% if(dept.enabled == 0) { %>
+                                                <span title="启用" style="color: green;" class="glyphicon glyphicon-ok"></span>
+                                                <% }%>
+                                                <% if(dept.enabled == 1) { %>
+                                                <span title="禁用" style="color: red;" class="glyphicon glyphicon-remove"></span>
+                                                <% }%>
+
+                                            </td>
+                                        </tr>
+                                        <% }) %>
+                                        <% } %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane " id="user">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <form>
+                                            <div class="form-group">
+                                                <label>请上传 <span style="color: red">用户.xlsx</span> 文件</label>
+                                                <input type="file">
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="panel panel-default">
+                                                    <div class="panel-body">
+                                                        <textarea class="tarea" id="content2" ></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <button type="button" onclick="checkExl(2);" class="btn btn-danger">
+                                                    <span class="glyphicon glyphicon-search"></span> 校验</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="disease">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <form>
+                                            <div class="form-group">
+                                                <label>请上传 <span style="color: red">疾病.xlsx</span> 文件</label>
+                                                <input type="file">
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="panel panel-default">
+                                                    <div class="panel-body">
+                                                        <textarea id="content3" class="tarea"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <button type="button" onclick="checkExl(3);" class="btn btn-danger">
+                                                    <span class="glyphicon glyphicon-search"></span> 校验</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer navbar-fixed-bottom pulllog-box">
+            <div class="container">
+                <a href="/excel/download" class="btn btn-info" title="上一步">上一步</a>
+                &nbsp;
+                <a href="/excel/db" class="btn btn-info" title="下一步">下一步</a>
+            </div>
+        </footer>
+    </div>
+
+    <script src="/plugins/jquery/jquery.min.js"></script>
+    <script src="/plugins/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $("#nav").children("li").each(function (i) {
+                $(this).bind('click', function () {
+                    $("#nav").children("li").each(function (i) {
+                        $(this).removeClass('active');
+                    });
+                    $("#nav-content").children("div").each(function () {
+                        $(this).removeClass('active');
+                    });
+                    $(this).addClass('active');
+                    $("#nav-content").children("div").eq(i).addClass('active');
+                });
+            });
+        });
+
+        // 校验
+        var num = 1;
+        function checkExl(type) {
+            var rand = "[" + num + "]" + " JS没有现成的函数，能够直接生成指定范围的随机数。JS没有现成的函数，能够直接生成指定范围的随机数。JS没有现成的函数，能够直接生成指定范围的随机数。";
+            var content = $("#content" + type).val();
+            if($.trim(content) == ""){
+                $("#content" + type).val(rand);
+            }else{
+                $("#content" + type).val(content + "\n" + rand);
+            }
+            num++;
+        }
+
+    </script>
+</body>
+</html>

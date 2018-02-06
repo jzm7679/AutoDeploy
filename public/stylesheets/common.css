@@ -1,0 +1,12 @@
+.pulllog-box{
+    bottom: 0;
+    left: 0;
+    z-index: 9999999;
+    height: 64px;
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+    color: #fff;
+    background: rgba(88,105,120,.9);
+    text-align: center;
+}

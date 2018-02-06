@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>医可视（VMP）- 下载模板</title>
+
+    <link rel="stylesheet" href="/plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="/stylesheets/excel/download/css/normalize.css">
+    <link rel="stylesheet" href="/stylesheets/excel/download/css/default.css">
+    <link rel="stylesheet" href="/stylesheets/excel/download/css/style.css">
+    <link rel="stylesheet" href="/stylesheets/excel/download/download.css">
+    <link rel="stylesheet" href="/stylesheets/common.css">
+
+    <style type="text/css">
+        .head{background-color: #3c3c3c;}
+        h3{color: white; margin: 0 auto; height: 50px; line-height: 50px;}
+        h3>small{color: white;}
+        .bor{text-align: center; padding-top: 200px;}
+    </style>
+
+
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row head">
+            <div class="col-md-12">
+                <h3>医可视（VMP）<small>下载模板</small></h3>
+            </div>
+        </div>
+
+        <div class="row bor">
+            <div class="col-md-offset-3 col-md-9">
+                <div class="artGroup slide">
+                    <div class="new-item-badge">科室</div>
+                    <div class="artwork"> <img src="/images/excel/download/dept.jpg" class="img-thumbnail">
+                        <div class="detail">
+                            <h3>科室</h3>
+                            <p>（1）下载Excel文件</p>
+                            <p>（2）请认真填写，勿破坏文件结构</p>
+                            <p>（3）请参考标准科室名称填写</p>
+                            <p>（4）请认真检查，作导入之前准备</p>
+                            <br>
+                            <br>
+                            <a href="/excel/download/download?type=1" class="btn btn-success">下载</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="artGroup slide">
+                    <div class="new-item-badge">用户</div>
+                    <div class="artwork"> <img src="/images/excel/download/doctor.jpg" class="img-thumbnail">
+                        <div class="detail">
+                            <h3>医务人员</h3>
+                            <p>（1）下载Excel文件</p>
+                            <p>（2）请认真填写，勿破坏文件结构</p>
+                            <p>（3）请仔细填写，不要缺省必要数据</p>
+                            <p>（4）请认真检查，作导入之前准备</p>
+                            <br>
+                            <br>
+                            <a href="/excel/download/download?type=2" class="btn btn-success">下载</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="artGroup slide">
+                    <div class="new-item-badge">疾病</div>
+                    <div class="artwork"> <img src="/images/excel/download/disease.jpg" class="img-thumbnail">
+                        <div class="detail">
+                            <h3>疾病</h3>
+                            <p>（1）下载Excel文件</p>
+                            <p>（2）请认真填写，勿破坏文件结构</p>
+                            <p>（3）请仔细填写，不要缺省必要数据</p>
+                            <p>（4）请参考标准科室名称及疾病名称填写</p>
+                            <p>（5）请认真检查，作导入之前准备</p>
+                            <br>
+                            <a href="/excel/download/download?type=3" class="btn btn-success">下载</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer navbar-fixed-bottom pulllog-box">
+            <div class="container">
+                <a href="/excel/index" class="btn btn-info" title="上一步">上一步</a>
+                &nbsp;
+                <a href="/excel/check" class="btn btn-info" title="下一步">下一步</a>
+            </div>
+        </footer>
+    </div>
+
+    <script src="/plugins/jquery/jquery.min.js"></script>
+    <script src="/plugins/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+
+    <script src="/javascripts/excel/download/jquery.easing.min.js"></script>
+    <script src="/javascripts/excel/download/modernizr.min.js"></script>
+
+    <script>
+        $(function () {
+            if ( $('html').hasClass('csstransforms3d') ) {
+                $('.artGroup').removeClass('slide').addClass('flip');
+                $('.artGroup.flip').on('mouseenter',
+                    function () {
+                        $(this).find('.artwork').addClass('theFlip');
+                    });
+                $('.artGroup.flip').on('mouseleave',
+                    function () {
+                        $(this).find('.artwork').removeClass('theFlip');
+                    });
+            } else {
+                $('.artGroup').on('mouseenter',
+                    function () {
+                        $(this).find('.detail').stop().animate({bottom:0}, 500, 'easeOutCubic');
+                    });
+                $('.artGroup').on('mouseleave',
+                    function () {
+                        $(this).find('.detail').stop().animate({bottom: ($(this).height() + -1) }, 500, 'easeOutCubic');
+                    });
+            }
+        });
+    </script>
+</body>
+</html>

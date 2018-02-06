@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>医可视（VMP）- 部署完毕</title>
+
+    <link rel="stylesheet" href="/plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/common.css">
+
+    <style type="text/css">
+        .head{background-color: #3c3c3c;}
+        h3{color: white; margin: 0 auto; height: 50px; line-height: 50px;}
+        h3>small{color: white;}
+        .bor{text-align: center;}
+        .tarea{width: 100%; height: 398px; border: 1px dashed #ddd; resize: none;}
+        .dept{overflow-y: scroll; height: 580px; display: block; width: 32%;}
+    </style>
+
+
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row head">
+        <div class="col-md-12">
+            <h3>医可视（VMP）<small>部署完毕</small></h3>
+        </div>
+    </div>
+
+    <div class="row" style="padding-top: 30px;">
+        <div class="col-md-offset-2 col-md-8">
+            <form>
+                <div class="form-group">
+                    &nbsp;
+                </div>
+                <div class="form-group">
+                    <div style="height: 500px;">
+                        <img src="/images/excel/success.jpg" width="80%" height="100%">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <footer class="footer navbar-fixed-bottom pulllog-box">
+        <div class="container">
+            <a href="/excel/import" class="btn btn-info" title="上一步">上一步</a>
+        </div>
+    </footer>
+</div>
+
+<script src="/plugins/jquery/jquery.min.js"></script>
+<script src="/plugins/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#nav").children("li").each(function (i) {
+            $(this).bind('click', function () {
+                $("#nav").children("li").each(function (i) {
+                    $(this).removeClass('active');
+                });
+                $("#nav-content").children("div").each(function () {
+                    $(this).removeClass('active');
+                });
+                $(this).addClass('active');
+                $("#nav-content").children("div").eq(i).addClass('active');
+            });
+        });
+    });
+
+</script>
+</body>
+</html>

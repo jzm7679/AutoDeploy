@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>医可视（VMP）- 总览</title>
+
+    <link rel="stylesheet" href="/plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/plugins/orgchart/dist/css/jquery.orgchart.css">
+    <link rel="stylesheet" href="/stylesheets/excel/index/index.css">
+    <link rel="stylesheet" href="/stylesheets/common.css">
+
+    <style type="text/css">
+        .head{background-color: #3c3c3c;}
+        h3{color: white; margin: 0 auto; height: 50px; line-height: 50px;}
+        h3>small{color: white;}
+        .bor{text-align: center;}
+        .well-tips{margin-top: 150px; text-align: left;}
+    </style>
+
+
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row head">
+            <div class="col-md-12">
+                <h3>医可视（VMP）<small>自动化部署工具</small></h3>
+            </div>
+        </div>
+
+        <div class="row bor">
+            <div class="col-md-offset-2 col-md-4">
+                <div id="chart-container">
+
+                </div>
+            </div>
+            <div class="col-md-4 well-tips">
+                <div class="row">
+                    <div class="com-md-12">
+                        <div class="alert alert-info alert-dismissible fade in" role="alert">
+                            <strong>注意事项：</strong>
+                            <p>（1）请作好准备工作，开始自动化部署操作</p>
+                            <p>（2）请备份原始数据库表结构及数据，并且作FTP文件备份</p>
+                            <p>（3）下载所有模板，请仔细检查，并录入相应的数据</p>
+                            <p>（4）请检测Exl文件，文件结构是否正确以及内容项是否按要求填写</p>
+                            <p>（5）根据输入的数据库名，创建新数据库，并初始化表</p>
+                            <p>（6）解析
+                                    <span style="color: red;">科室.xlsx / </span>
+                                    <span style="color: red;">医务人员.xlsx / </span>
+                                    <span style="color: red;">科室疾病.xlsx</span>
+                            </p>
+                            <p>（7）导入公共数据信息（包含菜单、权限、字典等信息）</p>
+                            <p>（8）结束</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="com-md-12">
+                        <div class="alert alert-info alert-dismissible fade in" role="alert">
+                            <strong>异常处理：</strong>
+                            <p>（1）第4步，检测若存在异常情况，则停止操作。</p>
+                            <p>（2）第6步，导入若存在局部失败，则回滚已操作项。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer navbar-fixed-bottom pulllog-box">
+            <div class="container">
+                <a href="/excel/download" class="btn btn-info" title="下一步">下一步</a>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="/plugins/jquery/jquery.min.js"></script>
+    <script src="/plugins/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="/plugins/orgchart/dist/js/jquery.orgchart.js"></script>
+
+    <script src="/javascripts/excel/index/orgchart.js"></script>
+</body>
+</html>
